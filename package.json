@@ -12,6 +12,7 @@
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.17.0",
+    "cors": "^2.8.1",
     "express": "^4.15.0",
     "mongoose": "^4.8.5"
   },
