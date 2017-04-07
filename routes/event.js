@@ -6,8 +6,11 @@ const router = express.Router();
 router.route('/events')
   .post((req, res) => {
     const event = new Event({
-      title: req.body.title,
+      type: req.body.type,
       date: req.body.date,
+      title: req.body.title,
+      speaker: req.body.speaker,
+      host: req.body.host,
     });
 
     event.save((err) => {
@@ -15,7 +18,7 @@ router.route('/events')
         return res.send(err);
       }
 
-      return res.json({ message: 'New event created!' });
+      return res.json(event);
     });
   })
   .get((req, res) => {
@@ -39,8 +42,11 @@ router.route('/events/:id')
   })
   .put((req, res) => {
     Event.findByIdAndUpdate(req.params.id, {
-      title: req.body.title,
+      type: req.body.type,
       date: req.body.date,
+      title: req.body.title,
+      speaker: req.body.speaker,
+      host: req.body.host,
     }, (err) => {
       if (err) {
         return res.send(err);
